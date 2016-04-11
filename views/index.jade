@@ -1,0 +1,16 @@
+include mixins
+extends layout
+
+block content
+  form(action="/poll", method="post")
+      .form-group
+          label(for="question") Question
+          input.form-control(type="text", id="question", name="question")
+      .form-group
+          label Answers
+          input.form-control(type="text", name="answers")
+          input.form-control(type="text", name="answers")
+          input.form-control(type="text", name="answers")
+          input.form-control(type="text", name="answers")
+      .form-group
+          input.form-control(type="submit")
