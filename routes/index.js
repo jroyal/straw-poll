@@ -8,6 +8,13 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/poll', function(req, res, next) {
+  console.log(req.query);
+  var room = req.query.room;
+  console.log(room);
+  res.redirect("/poll/" + room);
+});
+
 router.post('/poll', function(req, res, next) {
     var poll_name = Moniker.choose();
     console.log(req.body)
@@ -39,8 +46,9 @@ router.get('/poll/:poll_name', function(req, res, next) {
         }
 
         console.log(polls)
-        res.setHeader('Content-Type', 'application/json');
-        res.send(JSON.stringify(polls));
+        console.log(polls.question)
+
+        res.render("open-poll", {question: polls.question, answers: polls.answers} );
     })
 });
 module.exports = router;

@@ -1,0 +1,14 @@
+include mixins
+extends layout
+
+block content
+  .row
+    .col-md-6.col-md-offset-3
+      .well
+        legend= question
+        form.form-horizontal(action="/cast", method="post")
+          .form-group
+            each answer in answers
+              input(type="button", value="#{answer}").btn.btn-default.btn-lg.btn-block
+          .form-group
+              input.form-control(type="submit", value="Cast").btn.btn-success
