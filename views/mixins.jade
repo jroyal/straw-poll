@@ -1,2 +1,14 @@
 mixin titlename(name)
   h1= name
+
+mixin poll_question()
+  .form-group.form-group-lg
+    label.col-lg-2.control-label Question
+    .col-lg-10
+      input.form-control(type="text", name="question", placeholder="Enter your question here")
+
+mixin poll_answer()
+  .form-group.form-group-lg
+    label(for="answer").col-lg-2.control-label Answer
+    .col-lg-10
+      input(type="text", id="answer", name="answers").form-control

@@ -2,15 +2,32 @@ include mixins
 extends layout
 
 block content
-  form(action="/poll", method="post")
-      .form-group
-          label(for="question") Question
-          input.form-control(type="text", id="question", name="question")
-      .form-group
-          label Answers
-          input.form-control(type="text", name="answers")
-          input.form-control(type="text", name="answers")
-          input.form-control(type="text", name="answers")
-          input.form-control(type="text", name="answers")
-      .form-group
-          input.form-control(type="submit")
+  .row
+    .col-md-6.col-md-offset-3
+      .well
+        form.form-horizontal(action="/poll", method="post")
+          legend Create a new poll
+          +poll_question
+          .form-group
+          +poll_answer
+          +poll_answer
+          +poll_answer
+          +poll_answer
+          .form-group
+              input.form-control(type="submit", value="Create poll").btn.btn-success
+
+  .row
+    .col-md-6.col-md-offset-3
+      h1.text-center.or OR
+
+  .row
+    .col-md-6.col-md-offset-3
+      .well
+        form(action="/poll", method="get").form-horizontal
+          legend Go to an existing poll
+          .form-group.form-group-lg
+              label(for="room").col-lg-2.control-label Poll Name
+              .col-lg-10
+                input.form-control(type="text", id="room", name="room", placeholder="aggressive-shoes")
+          .form-group
+              input.form-control(type="submit", value="Go to poll").btn.btn-success
